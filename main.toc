@@ -1,0 +1,13 @@
+\babel@toc {portuges}{}
+\beamer@sectionintoc {1}{Texto em T\IeC {\'o}picos}{2}{0}{1}
+\beamer@sectionintoc {2}{Figuras}{11}{0}{2}
+\beamer@sectionintoc {3}{Tabelas}{17}{0}{3}
+\beamer@sectionintoc {4}{Algoritmos}{19}{0}{4}
+\beamer@sectionintoc {5}{C\IeC {\'o}digo-Fonte}{22}{0}{5}
+\beamer@sectionintoc {6}{Modelos Matem\IeC {\'a}ticos}{24}{0}{6}
+\beamer@subsectionintoc {6}{1}{Modelo descrito no texto}{25}{0}{6}
+\beamer@subsectionintoc {6}{2}{usando o Optprog}{28}{0}{6}
+\beamer@sectionintoc {7}{Usando o TiKz}{30}{0}{7}
+\beamer@subsectionintoc {7}{1}{Com Overlay}{31}{0}{7}
+\beamer@subsectionintoc {7}{2}{Est\IeC {\'a}tico}{40}{0}{7}
+\beamer@sectionintoc {8}{Refer\IeC {\^e}ncias}{42}{0}{8}

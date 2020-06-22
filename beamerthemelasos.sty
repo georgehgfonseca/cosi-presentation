@@ -1,0 +1,45 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+
+% Settings
+\useinnertheme{lasos}
+\useoutertheme{lasos}
+\usecolortheme{lasos}
+
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded= false, shadow=true]  
+
+\setbeamertemplate{headline}
+{
+	\leavevmode%
+		\begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.65ex,dp=1.5ex,right]{section in head/foot}%
+			\usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.65ex,dp=1.5ex,left]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}\hspace*{2ex}
+		\end{beamercolorbox}%
+	\vskip0pt%
+}
+\makeatletter
+\newenvironment{nohead}{
+    \setbeamertemplate{headline}{}    \setbeamertemplate{footline}{}
+    \addtobeamertemplate{frametitle}{\vspace*{-0.9\baselineskip}}{}
+}{}
+\makeatother
+
+
+\newcommand{\makenoheadtitle}{{
+\begin{nohead}
+\maketitle
+\end{nohead}
+}}
+
+
+
+\mode<all>

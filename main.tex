@@ -1,0 +1,452 @@
+\documentclass[mathsans,times]{beamer}
+
+\input epsf
+
+\usepackage[utf8]{inputenc}
+\usepackage{beamerthemesplit}
+\usepackage{optprog}
+\usepackage[portuges]{babel}
+\usepackage{tikz}
+\usepackage{color}
+% Para alterar o idioma das palavras reservadas dos algoritmos para inglês troque portuguese por english 
+\usepackage[portuguese,onelanguage,ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{float}
+\usepackage{xcolor,listings}
+
+\usepackage[alf]{abntex2cite}		% Citações padrão ABNT
+\usepackage{pifont}%
+\usepackage[fleqn]{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+
+%######################################################
+%DEfinição de comandos
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+%######################################################
+
+%DEFINIÇÃO DE NÓS NO TIKz
+\usetikzlibrary{chains,fit,shapes,calc}
+\usetikzlibrary{positioning} 
+\usetikzlibrary{arrows}
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+  arn_n/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+    fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+	arn_g/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=gray,
+    fill=gray, text width=1.5em}% arbre rouge noir, noeud noir
+}
+%######################################################
+
+\usetheme{lasos}
+
+\title{Template LaTeX para \\Apresentações de TCC}
+\author{and }
+\author[shortname]{Aluno  \inst{1} \and Orientador \inst{2}}
+\institute[shortinst]
+{
+\inst{1} Curso / UFOP
+%affiliation for author1
+\and %
+\inst{2} Departamento / UFOP
+%affiliation for author2
+}
+\date{Junho de 2020}
+
+
+\begin{document}
+
+%##############################################
+% CONFIGURAÇÕES DO TEMPLATE
+
+% LOGO DO LASOS A ESQUERDA NO SLIDE INICIAL - ok
+% BARRA HEADLINE VERMELHO - ok
+%BARRA DO TITULO CINZA CLARO - ok
+
+% EXEMPLOS: TOPICOS E SUBTÓPICOS, FIGURAS, TABELAS, ALGORITMOS, CODIGO FONTE, REFERÊNCIAS, AGRADECIMENTOS
+
+%##########################################
+% SLIDES DE INÍCIO DE SEÇÃO
+\newtranslation[to=portuges]{Section}{Seção}
+\newtranslation[to=portuges]{Subection}{Subseção}
+
+\AtBeginSection
+{
+\setbeamertemplate{section page}[mine]
+\frame{\sectionpage}
+
+}
+\AtBeginSubsection
+{
+\setbeamertemplate{subsection page}[mine]
+\frame{\subsectionpage}
+
+}
+
+%##########################################
+
+\makenoheadtitle
+
+\section{Texto em Tópicos}
+%\subsection{Subtópico}
+\frame{
+	\frametitle{Texto em Tópicos}
+	\begin{itemize}
+		\item Esse slide apresenta o texto organizado em tópicos e subtópicos.
+		\item O restante do modelo apresenta os seguintes exemplos:
+	    \begin{itemize} 
+		    \item Figuras.
+		    \item Tabelas.
+		    \item Algoritmos.
+		    \item Código Fonte.
+		    \item Modelos Matemáticos.
+		    \item Agradecimentos.
+		    \item Referências.
+		    \vspace{10mm}
+    	\end{itemize} 
+	\end{itemize}
+}
+
+%\subsection{Subtópico}
+\frame{
+	\frametitle{Texto em Tópicos - overlays}
+	\begin{itemize}
+		\item Esse slide apresenta o texto organizado em tópicos e subtópicos.
+		\item O restante do modelo apresenta os seguintes exemplos:
+	    \begin{itemize} 
+		    \item <1-> Figuras.
+		    \item <2-> Tabelas.
+		    \item <3-> Algoritmos.
+		    \item <4> Código Fonte.
+		    \item <4-6> Modelos Matemáticos.
+		    \item <7-> Agradecimentos.
+		    \item <7> Referências.
+		    \vspace{10mm}
+    	\end{itemize} 
+	\end{itemize}
+}
+
+\section{Figuras}
+
+\frame{
+	\frametitle{Figuras}
+	\begin{itemize}
+		\item Figuras, tabelas e elementos não textuais são trabalhados exatamente como em documentos comuns LaTeX.
+		\item Pode ser interessante incluir um espaçamento entre o texto e a imagem pelo comando $\backslash$vspace\{3mm\}
+		\vspace{3mm}
+		\begin{figure}[!htpb]
+	    	\centering\includegraphics[width=0.3\linewidth]{img/example.png}
+	    	\caption{É possível inserir legendas também.}
+    	\end{figure}
+
+	\end{itemize}
+}
+\frame{
+\frametitle{Duas colunas: Figura e texto}
+\footnotesize
+\begin{columns}[onlytextwidth]
+    \begin{column}{0.45\textwidth}
+Deste lado fica o texto, do outro a(s) figura(s)
+\begin{itemize}
+\item item 1
+\item item 2
+\end{itemize}
+Observe ue neste slide, as figuras estão utilizando \textit{overlays}
+  \end{column}
+    \begin{column}{0.5\textwidth}
+	\includegraphics<2>[width=6cm]{img/figure_1a.png}
+	\includegraphics<3>[width=6cm]{img/figure_1b.png}
+	\includegraphics<4>[width=6cm]{img/figure_1c.png}
+    \end{column}
+ \end{columns}
+
+}
+
+
+\section{Tabelas}
+
+\frame{
+	\frametitle{Tabelas}
+	\begin{itemize}
+		\item Uma excelente ferramenta para a criação de tabelas é o \url{https://www.tablesgenerator.com/}.
+	    \item Um exemplo de tabela é dado abaixo.
+		\vspace{5mm}
+        \begin{table}[htb]
+        \centering
+        \caption{É possível inserir legendas também.}
+        \label{tab:resultados}
+        \begin{tabular}{lrrrr}
+    	    \hline
+            Instância       &    Algoritmo A &     Algoritmo B &    Algoritmo C \\\hline
+            \textit{Arquivo 1}  &  1.00$\pm$0.7  &    1.90$\pm$0.5 &   \textbf{0.90$\pm$0.3} \\
+            \textit{Arquivo 2}  &  6.80$\pm$0.5  &    8.60$\pm$1.4 &   \textbf{5.90$\pm$0.2} \\
+            \textit{Arquivo 3}  &  \textbf{7.90$\pm$1.2}  &   13.25$\pm$3.1 &   8.50$\pm$1.7 \\
+            \textit{Arquivo 4}  &  8.00$\pm$0.0  &   12.70$\pm$0.2 &  \textbf{6.10$\pm$1.0} \\\hline
+        \end{tabular}
+        \end{table}
+    \end{itemize}
+}
+
+\section{Algoritmos}
+
+\frame{
+	\frametitle{Algoritmos}
+	\begin{itemize}
+	    \item Siga as convenções para pseudocódigos conforme \url{https://link.springer.com/content/pdf/bbm\%3A978-1-4471-5173-9\%2F1.pdf}
+	    \item Para trocar o idioma das palavra-chave altere o idioma de \textit{portuguese} para \textit{english} na linha:\\
+	    $\backslash$usepackage[portuguese, ...]\{algorithm2e\}
+    \end{itemize}
+}
+
+\frame{
+	\frametitle{Algoritmos}
+	\begin{itemize}
+	    \item Pseudocódigo do algoritmo de ordenação Bubble-Sort:
+		\vspace{2mm}
+\end{itemize}
+
+\begin{algorithm}[H]
+\footnotesize
+	\KwIn{(i) Um vetor $V$.}
+	\KwOut{(i) O vetor $V$ ordenado crescentemente.}
+	\For{$i = 0$ até $|V| - 1$} {
+    	$trocou \leftarrow$ \textbf{false};\\
+	    \For{$j = 0$ até $|V| - 1$}{
+	        \If{$V[j + 1] > V[j]$}{
+	            $aux \leftarrow V[j]$;\hspace{17mm}$\triangleright$ Troca as posições $i$ e $i + 1$ de $V$.\\
+	            $V[j] \leftarrow V[j + 1]$;\\
+	            $V[j + 1] \leftarrow aux$;\\
+	            $trocou \leftarrow$ \textbf{true};\\ 
+	        }
+	    }
+	    \If{$trocou$}{
+	        \textbf{break};\hspace{49mm}$\triangleright$ $V$ já está ordenado.\\
+	    }
+	}
+	\Return $V$;
+\footnotesize
+	\caption{BUBBLE-SORT.}
+	\label{alg:multistart}
+\end{algorithm}
+
+}
+
+\section{Código-Fonte}
+
+\begin{frame}[fragile]
+	\frametitle{Código-Fonte}
+	\begin{itemize}
+    	\item Segue um exemplo de implementação do algoritmo Bubble-Sort na linguagem Python
+	\end{itemize}
+\begin{tikzpicture}
+\node[draw, ufopred, thick, fill=gray!10, text=black, text width=10.5cm, align=left]{
+	\begin{lstlisting}[
+	language=Python,
+	showspaces=false,
+	basicstyle=\small,
+	showstringspaces=false
+	%numbers=left,
+	%numberstyle=\tiny,
+	commentstyle=\color{gray}]
+def bubblesort(V): #Complexidade O(N^2)
+    for i in range(len(V) - 1):
+        trocou = False
+        for j in range(len(V) - 1):
+            if V[j + 1] < V[j]:
+                aux = V[j] 
+                V[j] = V[j + 1]
+                V[j + 1] = aux
+                trocou = True
+        if not trocou:
+            break
+    return V
+\end{lstlisting}};
+\end{tikzpicture}
+\end{frame}
+
+\section{Modelos Matemáticos}
+\subsection{Modelo descrito no texto}
+\frame{
+	\frametitle{Modelos Matemáticos}
+	PROBLEMA DA MOCHILA
+\vspace{3MM}
+\begin{itemize}
+\item Conjuntos e parâmetros
+	\begin{table}[H]
+	\begin{tabular}{ll}
+		$\mathcal{I}$   & Itens \\ 
+		$w_{i}$         & Peso do item $i$\\
+		$b_{i}$         & Benefício do item $i$\\
+		$C$             & Capacidade da mochila\\
+	\end{tabular} 
+	\end{table}
+\item Variáveis
+%Outra opção para apresentar variáveis binárias
+\begin{equation*}
+x_i=\begin{cases}
+1 & \parbox[t]{.6\textwidth}{\mbox{se o item $i \in \mathcal{I}$ está na mochila.}}\\
+0 & \mbox{caso contrário.}
+\end{cases}
+\end{equation*}
+
+% 	\begin{table}[H]
+% 	\centering
+% 	\begin{tabular}{ll}
+% 		$x_i$   & 1 se o item $i \in \mathcal{I}$ está na mochila; 0 caso contrário \\ 
+% 	\end{tabular} 
+% 	\end{table}
+\end{itemize}
+}
+
+\frame{
+	\frametitle{Modelos Matemáticos}
+\begin{itemize}
+\item Restrições
+\begin{enumerate}
+    \item Capacidade da mochila:
+	\begin{equation}
+	\begin{split} 
+	\label{eq:r1}
+    \sum_{i \in \mathcal{I}} w_i \times x_i \leq C
+	\end{split}
+	\end{equation}
+\end{enumerate}
+	
+\item Função objetivo
+	\begin{equation}
+	\begin{split} 
+	\label{eq:obj}
+	\textbf{max} \sum_{i \in \mathcal{I}} b_i \times x_i
+	\end{split}
+	\end{equation}
+\end{itemize}
+}
+\subsection{usando o Optprog}
+\frame
+{
+\frametitle{Localização de Instalações}
+\scriptsize 
+  
+\textbf{Formulação:}\\
+\begin{optprog}	
+& \objective {\min \sum_{s \in S} \left\{C^f_{s}Y_{s} + \sum_{c \in C} V_{c}(G_{sc}X_{sc}) \right\} +\sum_{c \in C}V_cG_{c}X_{ic}}   
+\label{objloc}\\
+\vspace{0.2cm}
+& \sum_{s \in S} X_{sc} + X_{ic}  & = & 1 , & \forall c \in C \label{locr1}\\
+& \sum_{c \in C} X_{sc} & \leq & Y_{s}|C| , & \forall s \in S,  \label{locr1b}\\
+& X_{sc} & \in & \{0,1\}, & \forall s \in S, \forall c \in C \label{locr4}\\
+& Y_{s} & \in & \{0,1\}, & \forall s\in S \label{locr5}
+\end{optprog}
+
+}
+\section{Usando o TiKz}
+\subsection{Com Overlay}
+\frame{
+\frametitle{Árvore de BB - overlays}
+\centering
+\begin{tikzpicture}[->,>=stealth'] 
+			\node (P)[arn_n] at (1.5,1.5) {P};
+			
+			\onslide<2->{\node (S1) [arn_n] at (3.0,0.0) {$S_1$};
+				     \draw [->](P) to (S1) ;}
+			\onslide<3->{\node (S2) [arn_n] at (0.0,0.0) {$S_2$};
+			 	      \draw [->](P) to (S2) ;}
+			\onslide<5->{ \draw (P) -- (S1) node [midway, above, sloped] (TextNode) {\scriptsize $x \geq \ceil*{b}$};}
+			\onslide<6->{\draw (P) -- (S2) node [midway, above, sloped] (TextNode1) {\scriptsize $x \leq \floor*{b}$};}
+			\onslide<8->{\node (LsP) at (1.5,1.9){\tiny \textbf{LS}};
+				     \node (LiP) at (1.5,1.1){\tiny \textbf{LI}};
+				     \node (LsS1) at (3.0,0.4){\tiny \textbf{LS}};
+				     \node (LiS1) at (3.0,-0.4){\tiny \textbf{LI}};
+				     \node (LsS2) at (0.0,0.4){\tiny \textbf{LS}};
+				     \node (LiS2) at (0.0,-0.4){\tiny \textbf{LI}};}
+		
+
+            				
+\end{tikzpicture}
+
+}
+\subsection{Estático}
+\frame{
+\frametitle{Problema do fluxo de custo mínimo}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=20pt,inner sep=0pt]
+
+\tikzstyle{edge} = [draw,thick,->]
+\tikzstyle{weight} = [font=\tiny]
+
+
+\begin{figure}
+\label{fig1}
+\begin{tikzpicture}[scale=1.8, auto,swap]
+
+    \node[vertex] (e1) at (-3,1){$i$};
+    \node[vertex] (e2) at (-2,1){$j$};
+    \path[edge] (e1) -- node[weight,midway, below, sloped] {$(u_{ij};c_{ij})$} (e2); 
+    \foreach \pos/\name in {{(-3,0)/f}, {(-1,1)/a}, {(1,1)/c},
+                            {(-1,-1)/b}, {(1,-1)/d}, {(3,0)/t}}
+        \node[vertex] (\name) at \pos {$\name$};
+    % Connect vertices with edges and draw weights
+    \foreach \source/ \dest /\weight in {f/a/(7;3), f/b/(8;4),b/a/(5;2),a/b/(9;1),
+                                         a/c/(7;6), b/c/(5;3),b/d/(6;5),
+                                         c/d/(3;7),c/t/(8;3),
+                                         d/t/(7;2)}
+        \path[edge] (\source) -- node[weight,midway, below, sloped] {$\weight$} (\dest);
+\end{tikzpicture}
+\caption{Exemplo de rede}
+\end{figure}
+
+
+}
+
+\section{Referências}
+
+\frame{
+	\frametitle{Referências}
+	\begin{itemize}
+		\item Sempre que se utilizar do trabalho de outrem é necessário incluir uma citação, que pode fazer parte do texto ou não.
+		\begin{description}
+		    \item [Textual] \citeonline{fonseca2017} apresenta uma nova formulação para o problema. 
+		    \item [Não-textual] O problema de programação de horários é classificado como NP-Difícil \cite{even1975}.
+		\end{description}
+%		\item Ao final da apresentação incluir o slide de agradecimentos às instituições que apoiam o LASOS.
+    \end{itemize}
+}
+
+%\frame{
+%	\frametitle{Agradecimentos}
+%\begin{figure}
+%\centering
+%\begin{minipage}{.33\textwidth}
+%  \centering
+%  \includegraphics[width=.8\linewidth]{img/cnpq}
+%%  \caption{CNPq}
+%%  \label{fig:test1}
+%\end{minipage}%
+%\begin{minipage}{.33\textwidth}
+%  \centering
+%  \includegraphics[width=.4\linewidth]{img/ufop}
+%%  \caption{UFOP}
+%%  \label{fig:test1}
+%\end{minipage}%
+%\begin{minipage}{.33\textwidth}
+%  \centering
+%  \includegraphics[width=.7\linewidth]{img/fapemig}
+%%  \caption{FAPEMIG}
+%%  \label{fig:test2}
+%\end{minipage}
+%\end{figure}
+%}
+
+\begin{frame}[allowframebreaks]{Referências}
+
+\bibliography{bibliografy}
+\end{frame}
+
+
+\end{document}
